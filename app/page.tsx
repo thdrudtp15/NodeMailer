@@ -53,7 +53,7 @@ export default function Home() {
      */
     const onSubmit = async () => {
         try {
-            const response = await fetch('/api/get', {
+            const response = await fetch('/api/send', {
                 method: 'POST',
                 body: JSON.stringify({ ...content, file }),
                 headers: {
@@ -62,31 +62,34 @@ export default function Home() {
             });
             const data = await response.json();
         } catch (e) {
+            console.log(e);
             alert('에러 발생');
         }
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center w-content bg-gray-200 gap-5 rounded-2xl p-4">
             <h1>1 : 1 문의하기</h1>
-            <div className="flex gap-20">
-                <h2>제목</h2>
+            <label className="flex justify-between items-center">
+                <h2 className="w-20">제목</h2>
                 <input type="text" name="title" onChange={onChangeContent} />
-            </div>
-            <div className="flex gap-20">
-                <h2>문의내용</h2>
+            </label>
+            <label className="flex justify-between items-center">
+                <h2 className="w-20">문의내용</h2>
                 <textarea name="content" onChange={onChangeContent} />
-            </div>
-            <div className="flex gap-20">
-                <h2>이메일</h2>
+            </label>
+            <label className="flex justify-between items-center">
+                <h2 className="w-20">이메일</h2>
                 <input type="text" name="from" onChange={onChangeContent} />
-            </div>
-            <div className="flex gap-20">
-                <h2>첨부 파일</h2>
-                <input type="file" accept="image/*" name="file" onChange={onMountImg} />
+            </label>
+            <label className="flex justify-between items-center">
+                <h2 className="w-full">첨부 파일</h2>
+                <input className="hidden" type="file" accept="image/*" name="file" onChange={onMountImg} />
                 {/* {file && <img src={file} />} */}
-            </div>
-            <button onClick={() => onSubmit()}>작성완료</button>
+            </label>
+            <button className="rounded-xl bg-green-400 w-full h-10" onClick={() => onSubmit()}>
+                작성완료
+            </button>
         </div>
     );
 }

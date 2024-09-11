@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body className="flex items-center justify-center h-screen bg-blue-300">{children}</body>
         </html>
     );
 }

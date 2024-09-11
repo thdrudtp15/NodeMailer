@@ -11,7 +11,7 @@ const transporter = nodemailer?.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: process.env.NEXT_APP_EMAIL1,
+        user: process.env.NEXT_APP_EMAIL,
         pass: process.env.NEXT_APP_PWD,
     },
 });
