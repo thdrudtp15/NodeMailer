@@ -1,38 +1,25 @@
 import nodemailer from 'nodemailer';
 import { Attachment } from 'nodemailer/lib/mailer';
+import { MailContentType } from '@/types/mail';
+import { MailOptionType } from '@/types/mail';
 
 /**
- * 노드메일러 설정
+ * 노드메일러 설정 누가 받을 지
  */
 const transporter = nodemailer?.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.NEXT_EMAIL,
-        pass: process.env.NEXT_PWD,
+        user: process.env.NEXT_APP_EMAIL1,
+        pass: process.env.NEXT_APP_PWD,
     },
 });
-
-type ContactType = {
-    from: string;
-    title: string;
-    content: string;
-    file?: string; // 첨부파일을 위한 값
-};
-
-type MailOptionType = {
-    to: string;
-    from: string;
-    subject: string;
-    attachments?: Attachment[]; // 첨부파일을 위한 값.
-    html: string;
-};
 
 /**
  *  이메일 보내는 부분
  */
-export function sendEmail({ from, title, content, file }: ContactType) {
+export function sendEmail({ from, title, content, file }: MailContentType) {
     const mailOptions: MailOptionType = {
         to: process.env.NEXT_APP_EMAIL || '',
         from,
