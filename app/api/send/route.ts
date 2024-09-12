@@ -4,7 +4,6 @@ import { sendEmail } from '../email';
 export const POST = async (req: NextRequest) => {
     const body = await req.json();
 
-    console.log(body);
     if (!body?.title || !body?.from || !body?.content) {
         return NextResponse.json({ message: '필수 항목을 입력해주세요' }, { status: 400 });
     }
