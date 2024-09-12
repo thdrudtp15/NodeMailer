@@ -52,42 +52,42 @@ export default function Home() {
      * 서버 요청
      */
     const onSubmit = async () => {
-        try {
-            const response = await fetch('/api/send', {
-                method: 'POST',
-                body: JSON.stringify({ ...content, file }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const data = await response.json();
-        } catch (e) {
-            console.log(e);
-            alert('에러 발생');
+        const response = await fetch('/api/send', {
+            method: 'POST',
+            body: JSON.stringify({ ...content, file }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            alert(data?.message);
+        } else {
+            alert('이메일 전송 성공');
         }
     };
 
     return (
-        <div className="flex flex-col items-center justify-center w-content bg-gray-200 gap-5 rounded-2xl p-4">
-            <h1>1 : 1 문의하기</h1>
-            <label className="flex justify-between items-center">
-                <h2 className="w-20">제목</h2>
-                <input type="text" name="title" onChange={onChangeContent} />
+        <div className="container">
+            <h1>이메일 전송</h1>
+            <label className="input-box">
+                <h2 className="w-20">제목 * </h2>
+                <input type="text" name="title" onChange={onChangeContent} placeholder="제목을 작성해주세요" />
             </label>
-            <label className="flex justify-between items-center">
-                <h2 className="w-20">문의내용</h2>
-                <textarea name="content" onChange={onChangeContent} />
+            <label className="input-box">
+                <h2 className="w-20">문의내용 *</h2>
+                <textarea name="content" onChange={onChangeContent} placeholder="문의 내용을 작성해주세요" />
             </label>
-            <label className="flex justify-between items-center">
-                <h2 className="w-20">이메일</h2>
-                <input type="text" name="from" onChange={onChangeContent} />
+            <label className="input-box">
+                <h2 className="w-20">이메일 *</h2>
+                <input type="text" name="from" onChange={onChangeContent} placeholder="회신받을 이메일" />
             </label>
-            <label className="flex justify-between items-center">
+            <label className="input-box">
                 <h2 className="w-full">첨부 파일</h2>
                 <input className="hidden" type="file" accept="image/*" name="file" onChange={onMountImg} />
-                {/* {file && <img src={file} />} */}
+                {file && <img className="prv-img" src={file} alt="preview image" />}
             </label>
-            <button className="rounded-xl bg-green-400 w-full h-10" onClick={() => onSubmit()}>
+            <button className="submit-btn" onClick={() => onSubmit()}>
                 작성완료
             </button>
         </div>

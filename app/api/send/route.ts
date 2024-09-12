@@ -6,7 +6,7 @@ export const POST = async (req: NextRequest) => {
 
     console.log(body);
     if (!body?.title || !body?.from || !body?.content) {
-        return NextResponse.json({ message: '입력해주세요' }, { status: 400 });
+        return NextResponse.json({ message: '필수 항목을 입력해주세요' }, { status: 400 });
     }
 
     return sendEmail(body)

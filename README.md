@@ -41,3 +41,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 -   여러 인풋을 하나의 state로 관리하는 방법
 -   api라우트를 pages/api 방식이 아닌 app/api/.../router.ts로 하는 법을 배움.
 -   Next.js 에서만 그런 건지는 모르겠는데 label태그 안에 파일 인풋 태그 넣으면 자동으로 label태그와 연결되는 것
+-   app/api/.../router.js 방식으로 서버를 구성 시 에러를 throw 하는 것이 아니라 명시적으로 status와 메시지를 설정해 보내주어야 한다는 것을 알았다.

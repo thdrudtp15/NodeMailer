@@ -3,25 +3,69 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: #d2e0fb;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fef9d9;
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+.input-box {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+input,
+textarea {
+    flex: 1;
+    padding: 15px;
+    border-radius: 2rem;
+}
+
+.submit-btn {
+    width: 100%;
+    border-radius: 2rem;
+    background-color: #dee5d4;
+    padding: 12px;
+}
+
+.prv-img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    flex: 1;
+    border-radius: 2rem;
 }
